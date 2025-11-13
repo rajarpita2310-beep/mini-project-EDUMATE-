@@ -1,0 +1,28 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.sidebar-link.active {
+    background-color: #4f46e5; /* indigo-600 */
+    color: white;
+}
+.attendance-btn-group .active {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #4f46e5; /* Ring effect */
+}
+/* Style for custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
