@@ -1,53 +1,77 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduMate - Class Management</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800 font-sans">
 
+    <!-- LOGIN SCREEN -->
     <div id="login-screen" class="min-h-screen flex items-center justify-center gradient-bg p-4">
-        <div class="w-full max-w-md bg-white rounded-xl shadow-2xl p-8">
+        <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 transform transition-all hover:scale-[1.01]">
             <div class="text-center mb-8">
-                <h1 class="text-4xl font-bold text-gray-800">EduMate</h1>
-                <p class="text-gray-500 mt-2">Your Teacher-First Classroom Assistant</p>
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4">
+                    <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800">EduMate</h1>
+                <p class="text-gray-500 mt-2">Classroom Assistant</p>
             </div>
+
+            <!-- Login Form -->
             <form id="login-form">
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                    <input type="email" id="email" name="email" value="teacher@edumate.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="you@school.com" required>
+                <div class="space-y-4">
+                    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" placeholder="Email Address" required>
+                    <input type="password" id="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" placeholder="Password" required>
                 </div>
-                <div class="mb-6">
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <input type="password" id="password" value="password123" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="••••••••" required>
+                
+                <!-- Forgot Password Line -->
+                <div class="flex justify-end mt-2 mb-6">
+                    <a href="#" onclick="alert('Please contact the Administration Office to reset your password.')" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">Forgot Password?</a>
                 </div>
-                <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-transform transform hover:scale-105 shadow-lg">
-                    Login
-                </button>
-                 <p id="login-error" class="text-red-500 text-sm mt-4 text-center hidden">Please fill in both fields.</p>
+
+                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all transform hover:-translate-y-0.5">Login</button>
+                
+                <p class="text-center mt-6 text-sm text-gray-600">
+                    Don't have an account? 
+                    <a href="#" id="show-signup" class="text-indigo-600 font-bold hover:underline">Create Account</a>
+                </p>
             </form>
-            <div class="text-center mt-6">
-                <a href="#" class="text-sm text-indigo-600 hover:underline">Forgot password?</a>
-            </div>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="hidden">
+                <div class="space-y-4 mb-6">
+                    <input type="text" id="signup-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition-all" placeholder="Full Name" required>
+                    <input type="email" id="signup-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition-all" placeholder="Email Address" required>
+                    <input type="password" id="signup-password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition-all" placeholder="Create Password" required>
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 shadow-lg shadow-green-200 transition-all transform hover:-translate-y-0.5">Sign Up</button>
+                
+                <p class="text-center mt-6 text-sm text-gray-600">
+                    Already have an account? 
+                    <a href="#" id="show-login" class="text-indigo-600 font-bold hover:underline">Back to Login</a>
+                </p>
+            </form>
+
+            <p id="login-error" class="text-red-500 text-sm mt-4 text-center font-medium hidden bg-red-50 p-2 rounded border border-red-100"></p>
         </div>
     </div>
 
-    <div id="app-screen" class="hidden">
-        </div>
+    <!-- App Container -->
+    <div id="app-screen" class="hidden"></div>
+    
+    <!-- Modal Container -->
+    <div id="modal-container"></div>
 
-    <script src="app.js" defer></script>
+    <script src="app.js?v=6" defer></script>
+    <script>
+        // Initialize Icons for Login Screen immediately
+        lucide.createIcons();
+    </script>
 </body>
 </html>
